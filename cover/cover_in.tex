@@ -31,6 +31,26 @@
 %\makeatother
 \newpage
 \newpage
-\pagenumbering{arabic}
-\tableofcontents
+\newpage
+\newpage
+\input{content/0.thanks}
+\newpage
+\noindent\begin{tikzpicture}[remember picture, overlay, shift={(current page.south west)}]
+% Textes
+\node[above = 90pt of current page.center] (ptitle) {\parbox{\textwidth}{\centering\LARGE{\textbf{\projecttitle}}}};
+\node[above = 12.5pt of ptitle.north] {\rule{4cm}{0.25mm}};
+\node[below = 12.5pt of ptitle.south] {\rule{4cm}{0.25mm}};
+
+\node[above = 230pt of current page.center] (rapport) {\Large{\textsc{Rapport de projet de recherche tutoré}}};
+\node[below = 15pt of rapport] (rapport_year) {\textsc{$4^{\text{ème}}$année Informatique et Réseaux}};
+
+\node[below = 25pt of current page.center] (pstudents) {\centering\begin{tabular}{lll}\students\end{tabular}};
+\node[above = 5pt of pstudents] (pstudentstitle) {\textbf{Students}};
+
+\node[below = 220pt of current page.center] (ptutors) {\centering\begin{tabular}{lll}\tutors\end{tabular}};
+\node[above = 5pt of ptutors] (ptutorstitle) {\textbf{Tutors}};
+
+\node[below = 50pt of pstudents] (pdate) {\today};
+\end{tikzpicture}
+\newpage
 \newpage
