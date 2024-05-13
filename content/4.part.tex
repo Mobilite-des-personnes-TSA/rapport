@@ -1,10 +1,11 @@
+
 \section{Routing in the City of Toulouse}
 
 The main aim of our application is to provide a coherent routing tool, enabling people with ASD to cross the city in good conditions, avoiding as far as possible interferences that could cause them discomfort. Before we can apply heuristics to adapt routes to the specific needs of people with ASD, we first need to obtain optimized routes between the desired addresses, then check whether they are suitable for the user and, if necessary, modify them using our heuristics.
 
 
 
-In this section, we will talk more specifically about how we were able to obtain and display real-time journeys in the city of Toulouse by interacting with the APIs provided by Tisséo.
+In this section, we'll talk more specifically about how we were able to obtain and display real-time journeys in the city of Toulouse by interacting with the APIs provided by Tisséo.
 
 
 
@@ -16,9 +17,16 @@ Now that we have a correct map of Toulouse, we could correctly display the route
 
 
 
+
 \begin{center}
-\includegraphics[scale=0.15]{content/journey-settings-cut.png}    
+
+\includegraphics[scale=0.15]{content/journey-settings-cut.png}
+
+
+
+The journey planner page of our application
 \end{center}
+
 
 
 
@@ -35,7 +43,7 @@ The Journey API processes this request with the user parameters. It returns a re
 
 
 
-With the information extracted from the Tisséo API response, we need to reconstruct a route that can be displayed on our map using the Road class, a structure provided by the OpenStreetMap library that allows us to represent a route as a series of GPS coordinate points. The journey is divided between several steps. Each step is a part of the journey that uses only one mode of transportation and on which only one action is done. Some examples of what a step is could be “Walk on the Capitole Street for 500m and turn left” or “Take the bus 27 until the bus stop Rangueil ''. This structure let us add the entire route to the map. But at the same time it grants us the right to add points of interest, to specify additional information about the route, such as where to change streets or transportation mode but also the duration and the length of the next step.
+With the information extracted from the Tisséo API response, we need to reconstruct a route that can be displayed on our map using the Road class, a structure provided by the Open Street Map library that allows us to represent a route as a series of GPS coordinate points. The journey is divided between several “steps”. Each step is a part of the journey that uses only one mode of transportation and on which only one action is done. Some examples of what a step is could be “Walk on the Capitole Street for 500m and turn left” or “Take the bus 27 until the bus stop Rangueil”. This structure let us add the entire route to the map. But at the same time it grants us the right to add points of interest, to specify additional information about the route, such as where to change streets or transportation mode but also the duration and the length of the next step.
 
 
 
@@ -43,10 +51,15 @@ Thanks to our road structure, we can easily add the route to the map. By tapping
 
 
 
+
 \begin{center}
-\includegraphics[scale=0.30]{content/step_cut.png}    
+\includegraphics[scale=0.30]{content/step_cut.png} 
+
+
+
+Visualisation of a step
 \end{center}
 
-
+   
 
 Our application enables anyone to find their way around Toulouse by public transport, on foot or by bike. The suggested route takes into account real-time events and proposes the best solution according to current conditions.
