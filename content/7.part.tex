@@ -1,11 +1,9 @@
-\section{Limits}
+\section{Limitations of our work}
 
-Despite our efforts to provide the best application possible, our solution still presents limits in various parts.
-\newline
-First, although the Tisseo API provides information about affluence on the public transports network, the application does not have access to live data for noise and luminosity. Thus, tests were run using arbitrary values and the application is dependent on users’ feedback. Future versions should include Future versions should include the use of open data sources to always have reliable information about noise and luminosity. Collecting data from the field is another solution to provide the application with an accurate first reference.
-\newline
-Another limitation of the application concerns the use of multiple mode of transports to generate a route. The Tisseo API can uses various mode of transports when finding a path. However, in the case of our application, the returned path was always restrained to one mode and would stop before reaching the desired address. The user can still get a route using only one mode of transport, but this limitation severely hinders the application ability to find the optimal path, considering the variety of public transports in Toulouse.
-\newline
-Additionally, the extensive use of the Tisseo API means that the application can only be used effectively in Toulouse. To use the application in another city, we would need another version which is connected to the API of the public transports service of this city, provided an API exists. Open data services such as Open Street Map do not provide all information about public transports. Notably, OSM does not have information about Toulouse subway networks.
-\newline
+Despite our efforts to provide the best application possible, our solution still presents limits in various parts.\newline
+
+First, although the Tisseo API provides information about affluence on the public transports network, the application does not have access to live data for noise and luminosity. Thus, our tests were run using arbitrary values and the application is dependent on users’s feedback. Future versions should include the use of open data sources to always have reliable information about noise and luminosity. Collecting data from the field is another solution to provide the application with an accurate first reference.\newline
+
+Additionally, the extensive use of the Tisseo API means that the application can only be used effectively in Toulouse. To use the application in another city, we would need another version which is connected to the API of the public transports service of this city, provided an API exists. Open data services such as Open Street Map do not provide all information about public transports. Notably, OSM does not have information about Toulouse subway networks.\newline
+
 To increase the application scalability, future versions should implement their own routing service. The application could still access Tisseo API but only for geopoints, schedules and information about affluence. This would allows a better control on the proposed routes while also making the application less dependant on an API for routing.
