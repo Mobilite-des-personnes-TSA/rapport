@@ -11,12 +11,13 @@ The first step to making a working routing application was to display a map of t
 
 Now that we have a correct map of Toulouse, we can correctly display the routes we want to take. We created another activity so that the user could specify the characteristics of the journey, such as the departure and arrival addresses of the desired trip. The user can also select the desired modes of transport, including metro, bus, walking and cycling, as well as the desired departure time or arrival time.\newline
 
-\begin{center}
-\includegraphics[scale=0.25]{content/journey.png}
-\newline
-The journey planner page of our application
-\newline
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth][scale=0.25]{img/journey.png}
+    \caption{Journey Planner Activity}
+    \label{fig:JourneyPlanner}
+\end{figure}
 
 The Places API gives us access to Tisséo's vast database of known places in the city of Toulouse. We use this service to ensure that addresses provided by users are validated and recognized in Tisséo's infrastructure and interfaces. This validation process avoids potential errors that could result from the use of unrecognized or ambiguous addresses. It contributes to the accuracy and reliability of our route planning functionality, by returning verified addresses.
 In addition, the API offers features such as auto-completion or suggestions. Those features can help users enter addresses more efficiently and accurately. This further enhances the user experience by reducing the likelihood of input errors.\newline
@@ -30,11 +31,11 @@ With the information extracted from the Tisséo API response, we need to reconst
 
 Thanks to our road structure, we can easily add the route to the map. By tapping on the step icons, you can obtain information on the route and the next step.\newline
 
-\begin{center}
-\includegraphics[scale=0.30]{content/step_cut.png} 
-\newline
-Visualisation of a step
-\newline
-\end{center}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth][scale=0.3]{img/step_cut.png}
+    \caption{Visualisation of a step}
+    \label{fig:StepVisualisation}
+\end{figure}
 
 Our application enables anyone to find their way around Toulouse by public transport, on foot or by bike. The suggested route takes into account real-time events and proposes the best solution according to current conditions.\newline
