@@ -1,41 +1,41 @@
 \section{Adaptating heuristics}
 \subsection{Heuristics functionalities}
 
-The second stage of our project was to adapt our application such that it would generate a route based on the selection criteria that the user defined. Namely, how sensitive they were to specific external stimuli. The idea is to prompt the user to quantify the level of nuisance of each stimuli from a scale of one to ten. The algorithm then associates it to a weigh whilst generating a route, using an exponential conversion grid. We have speculated that an long road with average nuisance was better to take than a short one with high nuisance, hence the choice of the exponential conversion. The end result is creating different segments on the road with a nuisance coefficient, ideally, displayed using a colour code. 
+The second stage of our project was to adapt our application such that it would generate a route based on the selection criteria that the user-defined. Namely, how sensitive they were to specific external stimuli. The idea is to prompt the user to quantify the level of nuisance of each stimulus from a scale of one to ten. The algorithm then associates it to a weight whilst generating a route, using an exponential conversion grid. We have speculated that a long road with average nuisance was better to take than a short one with high nuisance, hence the choice of the exponential conversion. The result is creating different segments on the road with a nuisance coefficient, ideally, displayed using a colour code. 
 \newline
 
 However, the question remained, whether we would just skirt the corresponding area or still keep it for routing if necessary.
 \newline
 
-Two possible operational modes were possible. Either skirt the high nuisance ares, but that would have a great impact in the quality of the generated route with regards to length and travel time. Or, alternatively, minimise the nuisance coefficient, whilst still taking the "taboo" route but for a short period of time, and notifying the user of the precautionary measures to take. These two modes could be specifically configured in the user profile. 
+Two possible operational modes were possible. Either skirts the high nuisance areas, but that would have a great impact on the quality of the generated route regarding length and travel time. Alternatively, minimise the nuisance coefficient, whilst still taking the "taboo" route but for a short period, and notifying the user of the precautionary measures to take. These two modes could be specifically configured in the user profile. 
 \newline
 
-The first approach was to generate multiple requests from different starting points, offset from the user's position, expecting that the API would find a way to attach our current location to a different route in order to get to the destination. However, the ensuing Tisséo requests always defaulted on the initially suggested path, complementing by an amount of walking to get closer to the junction point.
+The first approach was to generate multiple requests from different starting points, offset from the user's position, expecting that the API would find a way to attach our current location to a different route in order to get to the destination. However, the ensuing Tisséo requests always defaulted on the initially suggested path, complemented by an amount of walking to get closer to the junction point.
 \newline
 
-We decided to implement an A Star algorithm that would function on a hybrid integration of the Tisséo API and the Open Street Map API. The algorithm would make multiple request to the Tisséo API. As soon as the nuisance coefficient of a specific chunk is found to be higher than what the app calculated to be the conjectured maximum tolerance, the algorithm tries to generate an alternative route to replace it. To do that, we parameterised an internal variance coefficient that would allow the generated route to deviate from the original one up to a certain geographical border, to limit the additional travel time. The algorithm would explore subsequent routes until a certain depth is reached, then backtrack and add that segment if it is conclusive. If no alternative route is found to be valid in accordance with the user's standards, the app displays the less troublesome road and adds a warning for the user, to take special precautions.
+We decided to implement an A Star algorithm that would function on a hybrid integration of the Tisséo API and the Open Street Map API. The algorithm would make multiple requests to the Tisséo API. As soon as the nuisance coefficient of a specific chunk is found to be higher than what the app calculated to be the conjectured maximum tolerance, the algorithm tries to generate an alternative route to replace it. To do that, we parameterised an internal variance coefficient that would allow the generated route to deviate from the original one up to a certain geographical border, to limit the additional travel time. The algorithm would explore subsequent routes until a certain depth is reached, then backtrack and add that segment if it is conclusive. If no alternative route is found to be valid in accordance with the user's standards, the app displays the less troublesome road and adds a warning for the user, to take special precautions.
 
 \newpage
 \subsection{Data Recollection}
 
-The main problem that we faced is that we envision out data points in a completely different way from what the Tisséo API provides us. Hence, we had to re-adapt the data structure to suit our requirements. Our data structure relied on a parting system that would divide the map into multiple zones, each with their corresponding nuisance coefficient.
+The main problem that we faced was that we envisioned our data points in a completely different way from what the Tisséo API provides us. Hence, we had to re-adapt the data structure to suit our requirements. Our data structure relied on a parting system that would divide the map into multiple zones, each with its corresponding nuisance coefficient.
 \newline
 
-In order to test our application, we instantiated a mock database, with approximate nuisance zones to assess how effective our algorithms were. Our assumption was that downtown would in general cause much more trouble to an autistic person because of the higher traffic.
+To test our application, we instantiated a mock database, with approximate nuisance zones to assess how effective our algorithms were. We assumed that downtown would in general cause much more trouble to an autistic person because of the higher traffic.
 \newline
 
-In a more advanced version, the application would update that data in real time, either through the feedback of the users, or through other side channels. We could prompt Tisséo to give us access to their real time data on how much traffic there is on specific lines and make a rough estimation on how noisy a place will be based on that. The light data however would have to be collected on the ground.
+In a more advanced version, the application would update that data in real time, either through the feedback of the users or through other side channels. We could prompt Tisséo to give us access to their real-time data on how much traffic there is on specific lines and make a rough estimation of how noisy a place will be based on that. The light data however would have to be collected on the ground.
 \newline
 
 \subsection{Advanced versions}
 
-Our project mainly relies on two road generating API. The Tisséo API, which allows us to links our routes with the existing public transportation structure, and the Open Street Map API, which generates complementary road chunks for people to walk on or bike.
+Our project mainly relies on two road-generating APIs. The Tisséo API, which allows us to link our routes with the existing public transportation structure, and the Open Street Map API, which generates complementary road chunks for people to walk on or bike.
 \newline
 
-We have envisioned providing multiple routes to the user, with different characteristics in order to let them choose whichever they prefer. Imagine we have a fast high nuisance route and a longer low nuisance route. The calibration of our coefficient only takes into account how much the user is bothered by a certain stimuli. It cannot assess on their behalf other constraints.
+We have envisioned providing multiple routes to the user, with different characteristics to let them choose whichever they prefer. Imagine we have a fast high nuisance route and a longer low nuisance route. The calibration of our coefficient only takes into account how much the user is bothered by certain stimuli. It cannot assess on their behalf other constraints.
 \newline
 
-In future version we may take into account the fact that certain modes of transportation may render a path "invalid", with regards to the user's necessary accommodations, and retract that mode of transportation for its specific segment.
+In future versions, we may take into account the fact that certain modes of transportation may render a path "invalid", about the user's necessary accommodations, and retract that mode of transportation for its specific segment.
 \newline
 
-Finally our main concern for now was to make sure that our combined API would create a valid route according to the heuristics we put in place. With concerns for the user experience, we are not able to see if the coefficients we chose to assess really mirror the sensory experience of autistic people. In a deployed beta version, we may implement a feedback system, to calibrate our coefficient based on how turbulent the travel was for the user.
+Finally, our main concern for now was to make sure that our combined API would create a valid route according to the heuristics we put in place. With concerns for the user experience, we are not able to see if the coefficients we chose to assess mirror the sensory experience of autistic people. In a deployed beta version, we may implement a feedback system, to calibrate our coefficient based on how turbulent the travel was for the user.
