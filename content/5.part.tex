@@ -19,9 +19,6 @@ The first approach was to generate multiple requests from different starting poi
 To counter that, we decided to implement an A Star algorithm that would function on a hybrid integration of the Tisséo API and the Open Street Map API. As soon as the nuisance coefficient of a specific chunk is found to be higher than what the app calculated to be the conjectured maximum tolerance, the algorithm tries to generate an alternative route to replace it. To do that, we parameterized an internal variance coefficient that would allow the generated route to deviate from the original one up to a certain geographical border, to limit the additional travel time. The algorithm would explore subsequent routes until a certain depth is reached, then backtrack and add that segment if it is conclusive. If no alternative route is found to be valid in accordance with the user's standards, the app displays the least troublesome road and adds a warning for the user, to take special precautions.
 
 
-\newpage
-
-
 \subsection{Data Recollection}
 
 
