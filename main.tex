@@ -1,26 +1,22 @@
 \documentclass[a4paper,11pt,twoside]{article}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{boldline,multirow,tabularx,colortbl,diagbox,makecell,fancybox}
-\usepackage{amsfonts,amssymb,amsmath,mathrsfs,array,stmaryrd}
-\usepackage{pgf,tikz,xcolor}
-\usetikzlibrary{calc,positioning,shapes.geometric,shapes.symbols,shapes.misc, fit, shapes, arrows, arrows.meta,fadings,through}
-\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
-\usepackage{fancyhdr}
-\usepackage{hyperref}
-%\usepackage[francais]{babel}
-
-
-%\usepackage{setspace}
-%\usepackage[indent]{parskip}
+\usepackage[utf8]{inputenc}
 \usepackage[backend=biber, style=ieee]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\usepackage[indent]{parskip}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{tikz}
+
 
 \input{variables}
-\input{advanced.params}
 \input{cover/covermain}
+\addbibresource{bibliography.bib}
+
 
 \begin{document}
 
-\input{content/__all__}
+    \input{content/__all__}
 
 \end{document}
